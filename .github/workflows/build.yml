@@ -138,7 +138,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@main
         with:
-          repository: wwg135/wwg135.github.io
+          repository: wwg135/repo
           token: ${{ secrets.DEPLOY_PAT }}
           path: website
 
@@ -147,8 +147,6 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p website/debs
-          # 如果想每次只保留最新版本，打开下面这行注释，会清掉旧的 deb
-          # rm -f website/debs/*.deb website/debs/SHA256SUMS
           cp debs/*.deb website/debs/
           ls -la website/debs/
 
